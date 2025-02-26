@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/webview">
+        <file>webview/library/vue3.js</file>
+        <file>webview/index.html</file>
+    </qresource>
+</RCC>

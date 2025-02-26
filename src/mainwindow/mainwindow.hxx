@@ -2,6 +2,10 @@
 #define MAINWINDOW_HXX
 
 #include "QMainWindow"
+#include "QWebEngineView"
+#include "QWebEnginePage"
+#include "QWebEngineProfile"
+#include "QHBoxLayout"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -18,5 +22,7 @@ class MainWindow : public QMainWindow {
 
     private:
         Ui::MainWindow *ui;
+
+        QWebEngineView webView;
 };
 #endif // MAINWINDOW_HXX

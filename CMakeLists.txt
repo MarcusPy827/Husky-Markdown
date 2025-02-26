@@ -8,9 +8,11 @@ set(CMAKE_AUTORCC ON)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_PREFIX_PATH "/home/brian/Qt/6.9.0/gcc_64/lib/cmake/Qt6")
+set(QT6_DIR "/home/brian/Qt/6.9.0/gcc_64/lib/cmake/Qt6")
 
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets LinguistTools)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets LinguistTools)
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets LinguistTools WebEngineWidgets)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets LinguistTools WebEngineWidgets)
 
 set(TS_FILES
     res/locales/Husky-Markdown_zh_CN.ts
@@ -24,10 +26,15 @@ set(PROJECT_SOURCES
         ${TS_FILES}
 )
 
+qt_add_lupdate(Husky-Markdown TS_FILES res/locales/Husky-Markdown_zh_CN.ts SOURCES ${PROJECT_SOURCES})
+
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(Husky-Markdown
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
+
+            res/webview/library/vue3.js
+            res/resources.qrc
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET Husky-Markdown APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
@@ -51,7 +58,7 @@ else()
     qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
 endif()
 
-target_link_libraries(Husky-Markdown PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(Husky-Markdown PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::WebEngineWidgets)
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an
