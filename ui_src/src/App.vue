@@ -38,7 +38,7 @@ export default {
   body {
     width: 100vw;
     height: 100vh;
-    background: color(var(--background));
+    background: var(--background);
     margin: 0;
     padding: 0;
   }
