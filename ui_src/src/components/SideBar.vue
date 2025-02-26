@@ -2,11 +2,11 @@
   <div class="sidebar-layout">
     <div class="sidebar-menu">
       <div class="sidebar-icon-container sidebar-icon-container-active" v-if="current_tool === 'file_manager'">
-        <img class="sidebar-icon" src="../assets/file_manager_active.svg" alt="" draggable="false" />
+        <img class="sidebar-icon" src="../assets/file_manager.svg" alt="" draggable="false" />
       </div>
 
       <div class="sidebar-icon-container" v-on:click="this.current_tool = 'file_manager'" v-else>
-        <img class="sidebar-icon" src="../assets/file_manager.svg" alt="" draggable="false" />
+        <img class="sidebar-icon" src="../assets/file_manager_active.svg" alt="" draggable="false" />
       </div>
       <div class="sidebar-icon-spacer"></div>
 

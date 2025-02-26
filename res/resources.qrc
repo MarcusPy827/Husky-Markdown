@@ -5,5 +5,10 @@
     </qresource>
     <qresource prefix="/icons">
         <file>icons/file_manager_active.svg</file>
+        <file>icons/file_manager.svg</file>
+        <file>icons/table_of_contents.svg</file>
+        <file>icons/table_of_contents_active.svg</file>
+        <file>icons/version_control.svg</file>
+        <file>icons/version_control_active.svg</file>
     </qresource>
 </RCC>
