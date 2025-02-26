@@ -3,4 +3,7 @@
         <file>webview/library/vue3.js</file>
         <file>webview/index.html</file>
     </qresource>
+    <qresource prefix="/icons">
+        <file>icons/file_manager_active.svg</file>
+    </qresource>
 </RCC>

@@ -55,3 +55,6 @@ compile_commands.json
 
 # Project Builds
 build/*
+
+# Original UI Sources
+ui_src/node_modules/*
