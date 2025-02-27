@@ -15,7 +15,7 @@ find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets LinguistTools WebEngin
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets LinguistTools WebEngineWidgets)
 
 set(TS_FILES
-    res/locales/Husky-Markdown_zh_CN.ts
+        res/locales/Husky-Markdown_zh.ts
 )
 
 set(PROJECT_SOURCES
@@ -26,7 +26,7 @@ set(PROJECT_SOURCES
         ${TS_FILES}
 )
 
-qt_add_lupdate(Husky-Markdown TS_FILES res/locales/Husky-Markdown_zh_CN.ts SOURCES ${PROJECT_SOURCES})
+qt_add_lupdate(Husky-Markdown TS_FILES res/locales/Husky-Markdown_zh.ts SOURCES ${PROJECT_SOURCES})
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(Husky-Markdown

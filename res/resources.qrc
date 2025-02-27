@@ -11,4 +11,8 @@
         <file>icons/version_control.svg</file>
         <file>icons/version_control_active.svg</file>
     </qresource>
+    <qresource prefix="/locales">
+        <file>locales/Husky-Markdown_zh.ts</file>
+        <file>locales/Husky-Markdown_zh.qm</file>
+    </qresource>
 </RCC>

@@ -49,7 +49,7 @@
      <string>File</string>
     </property>
     <addaction name="actionOpen_Notebook"/>
-    <addaction name="actionOpen_Single_file"/>
+    <addaction name="action_open_note"/>
     <addaction name="actionRecents"/>
    </widget>
    <addaction name="menuFile"/>
@@ -62,9 +62,12 @@
     <string>Open Folder</string>
    </property>
   </action>
-  <action name="actionOpen_Single_file">
+  <action name="action_open_note">
    <property name="text">
     <string>Open file</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+O</string>
    </property>
   </action>
   <action name="actionRecents">

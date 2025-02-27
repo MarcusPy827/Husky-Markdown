@@ -10,7 +10,7 @@ int main(int argc, char *argv[]) {
     const QStringList uiLanguages = QLocale::system().uiLanguages();
     for (const QString &locale : uiLanguages) {
         const QString baseName = "Husky-Markdown_" + QLocale(locale).name();
-        if (translator.load(":/i18n/" + baseName)) {
+        if (translator.load(":/locales/locales/" + baseName)) {
             a.installTranslator(&translator);
             break;
         }
