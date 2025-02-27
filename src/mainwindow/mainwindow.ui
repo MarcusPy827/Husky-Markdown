@@ -48,18 +48,22 @@
     <property name="title">
      <string>File</string>
     </property>
-    <addaction name="actionOpen_Notebook"/>
+    <addaction name="action_open_folder"/>
     <addaction name="action_open_note"/>
     <addaction name="actionRecents"/>
    </widget>
    <addaction name="menuFile"/>
   </widget>
-  <action name="actionOpen_Notebook">
+  <action name="action_open_folder">
    <property name="icon">
-    <iconset theme="QIcon::ThemeIcon::FolderVisiting"/>
+    <iconset resource="../../res/resources.qrc">
+     <normaloff>:/icons/icons/file_manager.svg</normaloff>:/icons/icons/file_manager.svg</iconset>
    </property>
    <property name="text">
     <string>Open Folder</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
    </property>
   </action>
   <action name="action_open_note">
@@ -76,6 +80,8 @@
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="../../res/resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -23,6 +23,12 @@ class MainWindow : public QMainWindow {
 
         ~MainWindow();
 
+        enum noteType {
+            MARKDOWN,
+            PDF,
+            UNSUPPORTTED
+        };
+
         static QString getUserHomePath();
 
     private:
@@ -31,6 +37,10 @@ class MainWindow : public QMainWindow {
         QWebEngineView webView;
 
     private slots:
+        void openFolder();
+
         void openNote();
+
+        noteType getNoteType(QString filename);
 };
 #endif // MAINWINDOW_HXX
