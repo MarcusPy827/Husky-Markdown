@@ -8,6 +8,7 @@
 #include "QHBoxLayout"
 #include "QFileDialog"
 #include "QStandardPaths"
+#include "../file_watcher/file_watcher.hxx"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -35,6 +36,8 @@ class MainWindow : public QMainWindow {
         Ui::MainWindow *ui;
 
         QWebEngineView webView;
+
+        FileWatcher *fileWatcher;
 
     private slots:
         void openFolder();

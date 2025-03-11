@@ -63,6 +63,14 @@ void MainWindow::openFolder() {
         tr("Open Folder"),
         getUserHomePath()
     );
+
+    fileWatcher = new FileWatcher(targetFolder);
+    /*
+    connect(&fileWatcher, &FileWatcher::jsonUpdated, [&](const QJsonObject &json) {
+        QString script = QString("updateFileTree(%1);").arg(QString(QJsonDocument(json).toJson(QJsonDocument::Compact)));
+        webView.page()->runJavaScript(script);  // 发送 JSON 到网页
+    });
+    */
 }
 
 void MainWindow::openNote() {
