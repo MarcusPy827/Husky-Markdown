@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
      */
     webView.setPage(new QWebEnginePage(this));
     webView.setUrl(QUrl("qrc:/webview/webview/index.html"));
+    webView.setStyleSheet("QMenu { color: #000000; background: #FFFFFF; border: 2px solid #3684DD; border-radius: 7px; padding: 7px; icon-size: 0px; } QMenu::item { color: #000000; background: #FFFFFF; padding: 7px; } QMenu::item:selected { color: #FFFFFF; background: #3684DD; border-radius: 7px; }");
     ui->mainLayout->addWidget(&webView);
     webView.show();
 
@@ -27,7 +28,7 @@ QString MainWindow::getUserHomePath() {
     return QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
 }
 
-MainWindow::noteType getNoteType(QString filename) {
+MainWindow::noteType MainWindow::getNoteType(QString filename) {
     MainWindow::noteType result;
 
     QString extensionName = "";

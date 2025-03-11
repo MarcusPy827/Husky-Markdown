@@ -14,7 +14,14 @@
    <string>Husky Markdown</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background: #F6F5F5;</string>
+   <string notr="true">background: #F6F5F5;
+
+QMenu {
+	color: #000000;
+	background: #FFFFFF;
+	border: 2px solid #3684DD;
+	border-radius: 5px;
+}</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="mainLayout">
@@ -41,7 +48,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>27</height>
+     <height>18</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -56,7 +63,7 @@
   </widget>
   <action name="action_open_folder">
    <property name="icon">
-    <iconset resource="../../res/resources.qrc">
+    <iconset>
      <normaloff>:/icons/icons/file_manager.svg</normaloff>:/icons/icons/file_manager.svg</iconset>
    </property>
    <property name="text">
@@ -80,8 +87,6 @@
    </property>
   </action>
  </widget>
- <resources>
-  <include location="../../res/resources.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
