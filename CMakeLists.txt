@@ -32,8 +32,6 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(Husky-Markdown
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
-
-            res/webview/library/vue3.js
             res/resources.qrc
             src/file_watcher/file_watcher.hxx
             src/file_watcher/file_watcher.cxx

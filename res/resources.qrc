@@ -1,7 +1,8 @@
 <RCC>
     <qresource prefix="/webview">
-        <file>webview/library/vue3.js</file>
         <file>webview/index.html</file>
+        <file>webview/index.css</file>
+        <file>webview/index.js</file>
     </qresource>
     <qresource prefix="/icons">
         <file>icons/file_manager_active.svg</file>
