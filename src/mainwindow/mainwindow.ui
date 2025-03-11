@@ -14,7 +14,7 @@
    <string>Husky Markdown</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background: #F6F5F5;
+   <string notr="true">background: #FFFFFF;
 
 QMenu {
 	color: #000000;
@@ -63,7 +63,7 @@ QMenu {
   </widget>
   <action name="action_open_folder">
    <property name="icon">
-    <iconset>
+    <iconset resource="../../res/resources.qrc">
      <normaloff>:/icons/icons/file_manager.svg</normaloff>:/icons/icons/file_manager.svg</iconset>
    </property>
    <property name="text">
@@ -87,6 +87,8 @@ QMenu {
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="../../res/resources.qrc"/>
+ </resources>
  <connections/>
 </ui>
