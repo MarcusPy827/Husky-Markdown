@@ -7,9 +7,15 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     /* 初始化Webview
      * Initialize webview
      */
+    webviewIPC = new WebviewIPC();
+    webChannel = new QWebChannel(this);
+    webChannel->registerObject("Backend", webviewIPC);
+
     webView.setPage(new QWebEnginePage(this));
     webView.setUrl(QUrl("qrc:/webview/webview/index.html"));
     webView.setStyleSheet("QMenu { color: #000000; background: #FFFFFF; border: 2px solid #3684DD; border-radius: 7px; padding: 7px; icon-size: 0px; } QMenu::item { color: #000000; background: #FFFFFF; padding: 7px; left: 0px; } QMenu::item:selected { color: #FFFFFF; background: #3684DD; border-radius: 7px; } QMenu::separator { height: 0px; background: transparent; margin: 0px; }");
+    webView.page()->setWebChannel(webChannel);
+
     ui->mainLayout->addWidget(&webView);
     webView.show();
 
@@ -46,7 +52,7 @@ MainWindow::noteType MainWindow::getNoteType(QString filename) {
         result = MainWindow::noteType::PDF;
     }
 
-    else if(extensionName == "md" || extensionName == "maekdown") {
+    else if(extensionName == "md" || extensionName == "markdown") {
         result = MainWindow::noteType::MARKDOWN;
     }
 
@@ -65,12 +71,8 @@ void MainWindow::openFolder() {
     );
 
     fileWatcher = new FileWatcher(targetFolder);
-    /*
-    connect(&fileWatcher, &FileWatcher::jsonUpdated, [&](const QJsonObject &json) {
-        QString script = QString("updateFileTree(%1);").arg(QString(QJsonDocument(json).toJson(QJsonDocument::Compact)));
-        webView.page()->runJavaScript(script);  // 发送 JSON 到网页
-    });
-    */
+    QObject::connect(fileWatcher, SIGNAL(jsonUpdated), this, SLOT(sendFolderJson));
+    sendFolderJson(fileWatcher->getTree());
 }
 
 void MainWindow::openNote() {
@@ -80,4 +82,9 @@ void MainWindow::openNote() {
         getUserHomePath(),
         tr("Note Files (*.markdown, *.pdf)")
     );
+}
+
+void MainWindow::sendFolderJson(QJsonObject in) {
+    QJsonDocument jsonDocument(in);
+    webviewIPC->updateJSON(jsonDocument.toJson(QJsonDocument::Compact));
 }

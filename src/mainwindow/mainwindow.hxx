@@ -8,7 +8,10 @@
 #include "QHBoxLayout"
 #include "QFileDialog"
 #include "QStandardPaths"
+#include "QWebChannel"
+#include "QJsonDocument"
 #include "../file_watcher/file_watcher.hxx"
+#include "../webview_ipc/webview_ipc.hxx"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -39,11 +42,17 @@ class MainWindow : public QMainWindow {
 
         FileWatcher *fileWatcher;
 
+        WebviewIPC *webviewIPC;
+
+        QWebChannel *webChannel;
+
     private slots:
         void openFolder();
 
         void openNote();
 
         noteType getNoteType(QString filename);
+
+        void sendFolderJson(QJsonObject in);
 };
 #endif // MAINWINDOW_HXX

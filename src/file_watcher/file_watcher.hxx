@@ -17,6 +17,8 @@ class FileWatcher : public QObject {
     public slots:
         void startWatch(QString targetDir);
 
+        QJsonObject getTree();
+
     private:
         QFileSystemWatcher watcher;
 
@@ -25,6 +27,8 @@ class FileWatcher : public QObject {
         QJsonObject genRootTree();
 
         QJsonArray getFileList(QString targetDir);
+
+        QJsonObject tree;
 
     private slots:
         void dirChanged(const QString &targetDir);

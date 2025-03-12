@@ -35,6 +35,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
             res/resources.qrc
             src/file_watcher/file_watcher.hxx
             src/file_watcher/file_watcher.cxx
+            src/webview_ipc/webview_ipc.hxx src/webview_ipc/webview_ipc.cxx
 
     )
 # Define target properties for Android with Qt 6 as:

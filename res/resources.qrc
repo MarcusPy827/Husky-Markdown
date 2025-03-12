@@ -3,6 +3,7 @@
         <file>webview/index.html</file>
         <file>webview/index.css</file>
         <file>webview/index.js</file>
+        <file>webview/bridge.js</file>
     </qresource>
     <qresource prefix="/icons">
         <file>icons/file_manager_active.svg</file>
@@ -16,4 +17,5 @@
         <file>locales/Husky-Markdown_zh.ts</file>
         <file>locales/Husky-Markdown_zh.qm</file>
     </qresource>
+    <qresource prefix="/"/>
 </RCC>

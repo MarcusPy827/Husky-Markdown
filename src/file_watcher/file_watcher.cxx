@@ -23,6 +23,7 @@ QJsonObject FileWatcher::genRootTree() {
     QJsonObject result;
     result["path"] = rootDir;
     result["files"] = getFileList(rootDir);
+    tree = result;
     return result;
 }
 
@@ -31,7 +32,7 @@ void FileWatcher::startWatch(QString targetDir) {
     if(!currentDir.exists()) return;
     if(!watcher.directories().contains(targetDir)) {
         watcher.addPath(targetDir);
-        genRootTree();
+        emit jsonUpdated(genRootTree());
     }
 
     /*
@@ -60,4 +61,12 @@ QJsonArray FileWatcher::getFileList(QString targetDir) {
     }
 
     return fileArray;
+}
+
+/* 此函数用于初始化后获取初始的文件夹内容
+ * This function is used to get initial folder content
+ */
+
+QJsonObject FileWatcher::getTree() {
+    return tree;
 }
