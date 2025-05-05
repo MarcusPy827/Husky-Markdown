@@ -1,0 +1,5 @@
+{
+    "cmake.buildToolArgs": [
+        //"-DCMAKE_PREFIX_PATH=/home/brian/Qt/6.9.0/gcc_64/lib/cmake/Qt6"
+    ]
+}
