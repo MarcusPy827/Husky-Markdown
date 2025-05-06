@@ -1,3 +1,6 @@
 [submodule "libs/material-color-utilities"]
 	path = libs/material-color-utilities
 	url = https://github.com/material-foundation/material-color-utilities.git
+[submodule "libs/Null-Log-Library"]
+	path = libs/Null-Log-Library
+	url = https://github.com/MarcusPy827/Null-Log-Library.git
