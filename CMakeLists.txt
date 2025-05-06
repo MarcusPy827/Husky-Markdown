@@ -22,6 +22,8 @@ set(PROJECT_SOURCES
         src/mainwindow/mainwindow.cxx
         src/mainwindow/mainwindow.hxx
         ${TS_FILES}
+        src/material_design/color_scheme/current_scheme.cxx
+        src/material_design/color_scheme/current_scheme.hxx
 )
 
 qt_add_lupdate(Husky-Markdown TS_FILES res/locales/Husky-Markdown_zh.ts SOURCES ${PROJECT_SOURCES})
