@@ -2,6 +2,7 @@
 #define MAINWINDOW_HXX
 
 #include "QMainWindow"
+#include "QHBoxLayout"
 #include "null_log.hxx"
 #include "../frameless_window/frameless_patcher.hxx"
 
@@ -10,10 +11,11 @@ class MainWindow : public QMainWindow {
 
     public:
         MainWindow(QWidget *parent = nullptr);
-        ~MainWindow() override = default;
+        ~MainWindow();
 
     private:
-
+        QWidget * titleBar = new QWidget(this);
+        FramelessPatcher * framelessPatcher = new FramelessPatcher(true, this, titleBar);
 
     private slots:
 
