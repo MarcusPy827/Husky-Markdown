@@ -2,7 +2,7 @@
 #define MAINWINDOW_HXX
 
 #include "QMainWindow"
-#include "QHBoxLayout"
+#include "QVBoxLayout"
 #include "null_log.hxx"
 #include "../frameless_window/frameless_patcher.hxx"
 

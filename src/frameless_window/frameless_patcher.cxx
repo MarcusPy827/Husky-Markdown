@@ -61,9 +61,13 @@ void FramelessPatcher::installEventFilter(QWidget *titleBar, QMainWindow *target
         bool isDraggingEnabled = false;
 
         public:
-        explicit DragHandler(QWidget* bar, QMainWindow* main)  : targetMainWindow(main), titleBar(bar) {}
+        explicit DragHandler(QWidget* bar, QMainWindow* main)  : titleBar(bar), targetMainWindow(main) {}
 
             bool eventFilter(QObject* obj, QEvent* event) {
+                // 补丁1：防止标题栏以外的控件触发窗口拖拽
+                // Patch 1: Prevent widget other than title bar invoking window dragging
+                if (obj != titleBar) return false;
+
                 if (event->type() == QEvent::MouseButtonPress) {
                     auto * mouse = static_cast<QMouseEvent*>(event);
 
