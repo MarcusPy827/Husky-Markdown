@@ -18,6 +18,8 @@ class MainWindow : public QMainWindow {
         ~MainWindow();
 
     private:
+        QWidget * centralWidget = new QWidget(this);
+        QVBoxLayout * mainLayout = new QVBoxLayout(centralWidget);
         QWidget * titleBar = new QWidget(this);
         QPushButton * minimizeBtn = new QPushButton();
         QPushButton * maximizeBtn = new QPushButton();
@@ -26,6 +28,9 @@ class MainWindow : public QMainWindow {
         FramelessPatcher * framelessPatcher = new FramelessPatcher(true, this, titleBar);
 
     private slots:
+        void minimizeWindow();
+        void toggleMaximizeWindow();
+        void closeWindow();
 
 };
 #endif // MAINWINDOW_HXX

@@ -25,6 +25,7 @@
     <qresource prefix="/styles">
         <file>styles/material_blue_light.css</file>
         <file>styles/material_blue_light_central_widget_normal.css</file>
+        <file>styles/material_blue_light_central_widget_maximize.css</file>
     </qresource>
     <qresource prefix="/"/>
 </RCC>
