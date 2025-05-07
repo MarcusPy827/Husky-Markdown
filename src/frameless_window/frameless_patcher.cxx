@@ -82,6 +82,7 @@ void FramelessPatcher::installEventFilter(QWidget *titleBar, QMainWindow *target
                     if (isDraggingEnabled) {
                         // NullLog::info("Frameless Window", "The main window is being dragged, we are currently updating position...");
                         auto * mouse = static_cast<QMouseEvent*>(event);
+                        if(targetMainWindow->isMaximized()) targetMainWindow->showNormal();
                         QPoint currentMousePos = mouse->globalPosition().toPoint();
                         targetMainWindow->move(targetMainWindow->pos() + (currentMousePos - lastMousePos));
                         lastMousePos = currentMousePos;
@@ -96,6 +97,11 @@ void FramelessPatcher::installEventFilter(QWidget *titleBar, QMainWindow *target
                         isDraggingEnabled = false;
                         NullLog::ok("Frameless Window", "Mouse released, updating process accomplished");
                     }
+                }
+
+                else if(event->type() == QEvent::MouseButtonDblClick) {
+                    if(targetMainWindow->isMaximized()) targetMainWindow->showNormal();
+                    else targetMainWindow->showMaximized();
                 }
 
                 return false;

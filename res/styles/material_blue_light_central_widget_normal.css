@@ -1,0 +1,8 @@
+/* Central widget when window is normal */
+#central_widget {
+    background-color: #e4e9eb;
+    border: 2px solid #4b6269;
+    border-radius: 8px;
+    margin: 16px;
+    padding: 16px;
+}

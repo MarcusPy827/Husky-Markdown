@@ -1,0 +1,72 @@
+/* Title Bar */
+#title_bar {
+    background: transparent;
+    min-height: 32px;
+    max-height: 32px;
+}
+
+/* CLose Btn */
+#close_btn {
+    min-height: 24px;
+    max-height: 24px;
+    min-width: 24px;
+    max-width: 24px;
+    qproperty-icon: url(:/icons/icons/close_icon_material_blue_light.svg);
+    border: none;
+}
+
+#close_btn:hover {
+    background: #cee7ef;
+    border: 0px solid #cee7ef;
+    border-radius: 6px;
+}
+
+#close_btn:pressed {
+    background: #334a51;
+    border: 0px solid #334a51;
+    border-radius: 6px;
+}
+
+/* Minimize Btn */
+#minimize_btn {
+    min-height: 24px;
+    max-height: 24px;
+    min-width: 24px;
+    max-width: 24px;
+    qproperty-icon: url(:/icons/icons/minimize_icon_material_blue_light.svg);
+    border: none;
+}
+
+#minimize_btn:hover {
+    background: #cee7ef;
+    border: 0px solid #cee7ef;
+    border-radius: 6px;
+}
+
+#minimize_btn:pressed {
+    background: #334a51;
+    border: 0px solid #334a51;
+    border-radius: 6px;
+}
+
+/* Maximize Btn */
+#maximize_btn {
+    min-height: 24px;
+    max-height: 24px;
+    min-width: 24px;
+    max-width: 24px;
+    qproperty-icon: url(:/icons/icons/maximize_icon_material_blue_light.svg);
+    border: none;
+}
+
+#maximize_btn:hover {
+    background: #cee7ef;
+    border: 0px solid #cee7ef;
+    border-radius: 6px;
+}
+
+#maximize_btn:pressed {
+    background: #334a51;
+    border: 0px solid #334a51;
+    border-radius: 6px;
+}

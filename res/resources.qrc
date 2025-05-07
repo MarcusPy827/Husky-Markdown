@@ -12,10 +12,19 @@
         <file>icons/table_of_contents_active.svg</file>
         <file>icons/version_control.svg</file>
         <file>icons/version_control_active.svg</file>
+
+        <file>icons/close_icon_material_blue_light.svg</file>
+        <file>icons/close_icon_material_blue_light_pressed.svg</file>
+        <file>icons/minimize_icon_material_blue_light.svg</file>
+        <file>icons/maximize_icon_material_blue_light.svg</file>
     </qresource>
     <qresource prefix="/locales">
         <file>locales/Husky-Markdown_zh.ts</file>
         <file>locales/Husky-Markdown_zh.qm</file>
+    </qresource>
+    <qresource prefix="/styles">
+        <file>styles/material_blue_light.css</file>
+        <file>styles/material_blue_light_central_widget_normal.css</file>
     </qresource>
     <qresource prefix="/"/>
 </RCC>

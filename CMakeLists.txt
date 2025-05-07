@@ -29,6 +29,8 @@ set(PROJECT_SOURCES
         src/material_design/color_scheme/color_gen.hxx
         src/frameless_window/frameless_patcher.cxx
         src/frameless_window/frameless_patcher.hxx
+        src/theme_loader/theme_loader.cxx
+        src/theme_loader/theme_loader.hxx
 )
 
 qt_add_lupdate(Husky-Markdown TS_FILES res/locales/Husky-Markdown_zh.ts SOURCES ${PROJECT_SOURCES})
