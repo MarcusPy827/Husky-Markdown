@@ -17,10 +17,12 @@ int main(int argc, char *argv[]) {
         const QString baseName = "Husky-Markdown_" + QLocale(locale).name();
         if (translator.load(":/locales/locales/" + baseName)) {
             a.installTranslator(&translator);
+            NullLog::ok("I18n Module", "Locale support found", "Loaded translation file \"" + baseName + "\".");
             break;
         }
     }
 
+    NullLog::info("MainWindow", "Setting up main window...");
     MainWindow w;
     w.show();
     return a.exec();

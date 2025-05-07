@@ -4,3 +4,6 @@
 [submodule "libs/Null-Log-Library"]
 	path = libs/Null-Log-Library
 	url = https://github.com/MarcusPy827/Null-Log-Library.git
+[submodule "libs/qwindowkit"]
+	path = libs/qwindowkit
+	url = https://github.com/stdware/qwindowkit.git

@@ -3,6 +3,7 @@
 
 #include "QMainWindow"
 #include "null_log.hxx"
+#include "../frameless_window/frameless_patcher.hxx"
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
