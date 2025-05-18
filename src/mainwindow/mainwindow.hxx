@@ -8,7 +8,6 @@
 #include "QPushButton"
 #include "null_log.hxx"
 #include "QWKWidgets/widgetwindowagent.h"
-#include "../frameless_window/frameless_patcher.hxx"
 #include "../theme_loader/theme_loader.hxx"
 
 class MainWindow : public QMainWindow {
@@ -16,7 +15,7 @@ class MainWindow : public QMainWindow {
 
     public:
         MainWindow(QWidget *parent = nullptr);
-        ~MainWindow();
+        ~MainWindow() override = default;
 
     private:
         QWidget * centralWidget = new QWidget(this);
@@ -25,8 +24,6 @@ class MainWindow : public QMainWindow {
         QPushButton * minimizeBtn = new QPushButton();
         QPushButton * maximizeBtn = new QPushButton();
         QPushButton * closeBtn = new QPushButton();
-
-        FramelessPatcher * framelessPatcher = new FramelessPatcher(true, this, titleBar);
 
     private slots:
         void minimizeWindow();
