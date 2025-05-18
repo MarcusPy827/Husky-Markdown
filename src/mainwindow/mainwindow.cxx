@@ -41,6 +41,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     auto * contentContainer = new QWidget(centralWidget);
     mainLayout->addWidget(contentContainer);
 
+    this->setAttribute(Qt::WA_TranslucentBackground);
     this->setWindowTitle("Husky Markdown");
     this->resize(800, 600);
     this->setStyleSheet(ThemeLoader::FromFile(":/styles/styles/material_blue_light.css"));
@@ -52,17 +53,19 @@ void MainWindow::minimizeWindow() {
 }
 
 void MainWindow::toggleMaximizeWindow() {
-    if (this->isMaximized()) {
-        centralWidget->setStyleSheet(ThemeLoader::FromFile(":/styles/styles/material_blue_light_central_widget_normal.css"));
-        showNormal();
-    }
-
-    else {
-        centralWidget->setStyleSheet(ThemeLoader::FromFile(":/styles/styles/material_blue_light_central_widget_maximize.css"));
-        showMaximized();
-    }
+    if (this->isMaximized()) showNormal();
+    else showMaximized();
 }
 
 void MainWindow::closeWindow() {
     this->close();
+}
+
+void MainWindow::changeEvent(QEvent *event) {
+    if (event->type() == QEvent::WindowStateChange) {
+        if(isMaximized()) centralWidget->setStyleSheet(ThemeLoader::FromFile(":/styles/styles/material_blue_light_central_widget_maximize.css"));
+        else centralWidget->setStyleSheet(ThemeLoader::FromFile(":/styles/styles/material_blue_light_central_widget_normal.css"));
+    }
+
+    QMainWindow::changeEvent(event);
 }
