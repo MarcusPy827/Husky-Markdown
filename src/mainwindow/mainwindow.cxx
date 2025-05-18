@@ -1,6 +1,9 @@
 #include "mainwindow.hxx"
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
+    auto agent = new QWK::WidgetWindowAgent(this);
+    agent->setup(this);
+
     centralWidget->setObjectName("central_widget");
     this->setCentralWidget(centralWidget);
 
@@ -34,7 +37,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     auto * contentContainer = new QWidget(centralWidget);
     mainLayout->addWidget(contentContainer);
 
-    framelessPatcher->patch(this);
+    // framelessPatcher->patch(this);
     this->setWindowTitle("Husky Markdown");
     this->resize(800, 600);
     this->setStyleSheet(ThemeLoader::FromFile(":/styles/styles/material_blue_light.css"));

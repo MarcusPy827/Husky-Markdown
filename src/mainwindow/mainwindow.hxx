@@ -7,6 +7,7 @@
 #include "QSpacerItem"
 #include "QPushButton"
 #include "null_log.hxx"
+#include "QWKWidgets/widgetwindowagent.h"
 #include "../frameless_window/frameless_patcher.hxx"
 #include "../theme_loader/theme_loader.hxx"
 

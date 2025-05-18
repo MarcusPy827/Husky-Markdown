@@ -52,6 +52,7 @@ void FramelessPatcher::patch(QMainWindow * mainwindow) {
     else NullLog::error("Frameless Window", "Cannot apply frameless window, the class FramelessPatcher is not initialized properly.");
 }
 
+
 void FramelessPatcher::installEventFilter(QWidget *titleBar, QMainWindow *targetMainWindow) {
     class DragHandler : public QObject {
         QMainWindow * targetMainWindow;
@@ -100,7 +101,10 @@ void FramelessPatcher::installEventFilter(QWidget *titleBar, QMainWindow *target
                 }
 
                 else if(event->type() == QEvent::MouseButtonDblClick) {
-                    if(targetMainWindow->isMaximized()) targetMainWindow->showNormal();
+                    if(targetMainWindow->isMaximized()) {
+                        targetMainWindow->showNormal();
+                    }
+
                     else targetMainWindow->showMaximized();
                 }
 
