@@ -20,8 +20,27 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     titleBarLayout->setSpacing(8);
     titleBar->setLayout(titleBarLayout);
 
-    auto * titleBarSpacer = new QSpacerItem(32, 32, QSizePolicy::Expanding, QSizePolicy::Expanding);
-    titleBarLayout->addSpacerItem(titleBarSpacer);
+    fileBtn->setObjectName("file_btn");
+    fileBtn->setText(tr("(F)ile"));
+    fileBtn->setShortcut(QKeySequence("Alt+F"));
+    agent->setHitTestVisible(fileBtn, true);
+    titleBarLayout->addWidget(fileBtn);
+
+    helpBtn->setObjectName("help_btn");
+    helpBtn->setText(tr("(H)elp"));
+    helpBtn->setShortcut(QKeySequence("Alt+H"));
+    agent->setHitTestVisible(helpBtn, true);
+    titleBarLayout->addWidget(helpBtn);
+
+    auto * titleBarSpacer0 = new QSpacerItem(32, 32, QSizePolicy::Expanding, QSizePolicy::Expanding);
+    titleBarLayout->addSpacerItem(titleBarSpacer0);
+
+    appTitle->setObjectName("app_title");
+    appTitle->setText("Husky Markdown");
+    titleBarLayout->addWidget(appTitle, 0, Qt::AlignVCenter);
+
+    auto * titleBarSpacer1 = new QSpacerItem(32, 32, QSizePolicy::Expanding, QSizePolicy::Expanding);
+    titleBarLayout->addSpacerItem(titleBarSpacer1);
 
     minimizeBtn->setObjectName("minimize_btn");
     connect(minimizeBtn, SIGNAL(clicked(bool)), this, SLOT(minimizeWindow()));

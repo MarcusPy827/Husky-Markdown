@@ -5,6 +5,54 @@
     max-height: 32px;
 }
 
+/* File Btn */
+#file_btn {
+    color: #334a51;
+    min-height: 24px;
+    max-height: 24px;
+    border: none;
+    font-size: 14px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+#file_btn:hover {
+    background: #cee7ef;
+    border: 0px solid #cee7ef;
+    border-radius: 6px;
+}
+
+/* App Title */
+#app_title {
+    color: #334a51;
+    min-height: 32px;
+    max-height: 32px;
+    font-size: 14px;
+}
+
+/* Help Btn */
+#help_btn {
+    color: #334a51;
+    min-height: 24px;
+    max-height: 24px;
+    border: none;
+    font-size: 14px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+#help_btn:hover {
+    background: #cee7ef;
+    border: 0px solid #cee7ef;
+    border-radius: 6px;
+}
+
+#help_btn:pressed {
+    background: #cee7ef;
+    border: 0px solid #cee7ef;
+    border-radius: 6px;
+}
+
 /* CLose Btn */
 #close_btn {
     min-height: 24px;

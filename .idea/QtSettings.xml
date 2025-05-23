@@ -7,16 +7,16 @@
         <entry key="Debug">
           <value>
             <PerProfileState>
-              <option name="myQmlPath" value="$USER_HOME$/Qt/6.9.0/gcc_64/qml" />
-              <option name="myQtBinPath" value="$USER_HOME$/Qt/6.9.0/gcc_64/bin" />
+              <option name="myQmlPath" value="D:/SDK/Qt/6.8.0/msvc2022_64/qml" />
+              <option name="myQtBinPath" value="D:/SDK/Qt/6.8.0/msvc2022_64/bin" />
             </PerProfileState>
           </value>
         </entry>
         <entry key="Release">
           <value>
             <PerProfileState>
-              <option name="myQmlPath" value="$USER_HOME$/Qt/6.9.0/gcc_64/qml" />
-              <option name="myQtBinPath" value="$USER_HOME$/Qt/6.9.0/gcc_64/bin" />
+              <option name="myQmlPath" value="D:/SDK/Qt/6.8.0/msvc2022_64/qml" />
+              <option name="myQtBinPath" value="D:/SDK/Qt/6.8.0/msvc2022_64/bin" />
             </PerProfileState>
           </value>
         </entry>

@@ -6,6 +6,7 @@
 #include "QHBoxLayout"
 #include "QSpacerItem"
 #include "QPushButton"
+#include "QLabel"
 #include "null_log.hxx"
 #include "QWKWidgets/widgetwindowagent.h"
 #include "../theme_loader/theme_loader.hxx"
@@ -21,6 +22,9 @@ class MainWindow : public QMainWindow {
         QWidget * centralWidget = new QWidget(this);
         QVBoxLayout * mainLayout = new QVBoxLayout(centralWidget);
         QWidget * titleBar = new QWidget(this);
+        QPushButton * fileBtn = new QPushButton();
+        QPushButton * helpBtn = new QPushButton();
+        QLabel * appTitle = new QLabel();
         QPushButton * minimizeBtn = new QPushButton();
         QPushButton * maximizeBtn = new QPushButton();
         QPushButton * closeBtn = new QPushButton();
