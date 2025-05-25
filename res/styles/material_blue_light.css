@@ -119,3 +119,21 @@
     border: 0px solid #334a51;
     border-radius: 6px;
 }
+
+/* Navigation Rail */
+#navigation_rail {
+    min-width: 96px;
+    max-width: 96px;
+    height: 100%;
+}
+
+/* FAB */
+#fab {
+    background: #CEE7EF;
+    min-width: 56px;
+    max-width: 56px;
+    min-height: 56px;
+    max-height: 56px;
+    border: 0px solid #CEE7EF;
+    border-radius: 16px;
+}

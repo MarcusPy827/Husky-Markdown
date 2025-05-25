@@ -66,13 +66,15 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     contentContainer->setLayout(contentLayout);
 
     navigationRail->setObjectName("navigation_rail");
-    navigationRail->setFixedWidth(96);
+    contentLayout->addWidget(navigationRail);
 
     auto * navigationRailLayout = new QVBoxLayout;
     navigationRailLayout->setContentsMargins(20, 20, 20, 20);
     navigationRailLayout->setSpacing(4);
+    navigationRail->setLayout(navigationRailLayout);
 
-
+    fab->setObjectName("fab");
+    navigationRailLayout->addWidget(fab, 0, Qt::AlignTop);
 
     this->setAttribute(Qt::WA_TranslucentBackground);
     this->setWindowTitle("Husky Markdown");

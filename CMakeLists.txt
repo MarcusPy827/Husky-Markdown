@@ -16,6 +16,7 @@ include_directories(/home/brian/Qt/6.9.0/gcc_64/include/QtGui/6.9.0/QtGui)
 
 add_subdirectory(libs/Null-Log-Library/src)
 add_subdirectory(libs/qwindowkit)
+add_subdirectory(utils/StateLayerCalculator)
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Gui Widgets LinguistTools)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Gui Widgets LinguistTools)
@@ -36,8 +37,6 @@ set(PROJECT_SOURCES
         src/frameless_window/frameless_patcher.hxx
         src/theme_loader/theme_loader.cxx
         src/theme_loader/theme_loader.hxx
-        src/navigation_rail/navigation_rail.cxx
-        src/navigation_rail/navigation_rail.hxx
 )
 
 qt_add_lupdate(Husky-Markdown TS_FILES res/locales/Husky-Markdown_zh.ts SOURCES ${PROJECT_SOURCES})
