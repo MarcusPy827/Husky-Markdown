@@ -4,5 +4,8 @@
     <mapping directory="" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/libs/Null-Log-Library" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/libs/material-color-utilities" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/libs/qwindowkit" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/libs/qwindowkit/qmsetup" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/libs/qwindowkit/qmsetup/src/syscmdline" vcs="Git" />
   </component>
 </project>

@@ -12,10 +12,7 @@
     max-height: 16px;
     border: none;
     font-size: 14px;
-    padding-left: 8px;
-    padding-right: 8px;
-    padding-top: 1px;
-    padding-bottom: 1px;
+    padding: 4px;
     vertical-align: middle;
 }
 
@@ -32,10 +29,7 @@
     max-height: 16px;
     border: none;
     font-size: 14px;
-    padding-left: 8px;
-    padding-right: 8px;
-    padding-top: 1px;
-    padding-bottom: 1px;
+    padding: 4px;
     vertical-align: middle;
 }
 
@@ -57,6 +51,7 @@
     min-height: 16px;
     max-height: 16px;
     font-size: 14px;
+    padding: 4px;
 }
 
 /* CLose Btn */

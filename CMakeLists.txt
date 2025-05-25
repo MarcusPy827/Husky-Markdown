@@ -21,7 +21,7 @@ find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Gui Widgets LinguistTools)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Gui Widgets LinguistTools)
 
 set(TS_FILES
-        res/locales/Husky-Markdown_zh.ts
+        res/locales/Husky-Markdown_zh.ts.
 )
 
 set(PROJECT_SOURCES
@@ -36,6 +36,8 @@ set(PROJECT_SOURCES
         src/frameless_window/frameless_patcher.hxx
         src/theme_loader/theme_loader.cxx
         src/theme_loader/theme_loader.hxx
+        src/navigation_rail/navigation_rail.cxx
+        src/navigation_rail/navigation_rail.hxx
 )
 
 qt_add_lupdate(Husky-Markdown TS_FILES res/locales/Husky-Markdown_zh.ts SOURCES ${PROJECT_SOURCES})
