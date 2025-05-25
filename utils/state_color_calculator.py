@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QGroupBox, QGridLayout, QLabel, QLineEdit, QPushButton, QFrame, QDoubleSpinBox
+from PySide6.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QGroupBox, QGridLayout, QLabel, QLineEdit, QPushButton, QFrame, QDoubleSpinBox, QCheckBox
 from PySide6.QtCore import QSize, Qt
 from enum import Enum
 import sys
@@ -59,8 +59,12 @@ class StateLayerCalculator(QWidget):
         self.input_group.setTitle("输入 · Input")
         self.main_layout.addWidget(self.input_group)
 
+        self.input_layout = QVBoxLayout()
+        self.input_group.setLayout(self.input_layout)
+
         self.form_layout = QGridLayout()
-        self.input_group.setLayout(self.form_layout)
+        self.form_layout.setContentsMargins(0, 0, 0, 0)
+        self.input_layout.addLayout(self.form_layout)
 
         self.base_color_label = QLabel()
         self.base_color_label.setText("底色 · Base color: ")
@@ -101,6 +105,11 @@ class StateLayerCalculator(QWidget):
         self.opacity_edit.setValue(0.0)
         self.opacity_edit.valueChanged.connect(self.update_color)
         self.form_layout.addWidget(self.opacity_edit, 4, 1)
+
+        self.auto_omit_alpha_check_box = QCheckBox()
+        self.auto_omit_alpha_check_box.setText("自动忽略Alpha通道 · Auto-omit alpha channel")
+        self.auto_omit_alpha_check_box.toggled.connect(self.update_color)
+        self.input_layout.addWidget(self.auto_omit_alpha_check_box)
 
         self.output_group = QGroupBox()
         self.output_group.setTitle("输出 · Output")
@@ -400,15 +409,27 @@ class StateLayerCalculator(QWidget):
         self.color_gen.set_b(self.add_layer(self.base_color_in.get_b(), self.state_color_in.get_b()))
         self.color_gen.set_a(self.add_layer(self.base_color_in.get_a(), self.state_color_in.get_a()))
 
-        self.color_gen_hex = f"#{self.color_gen.get_r():02X}{self.color_gen.get_g():02X}{self.color_gen.get_b():02X}{self.color_gen.get_a():02X}"
-        self.color_hex.setText("<b>HEX</b>: " + self.color_gen_hex)
-        self.copy_hex.show()
+        if self.auto_omit_alpha_check_box.isChecked() and self.color_gen.get_a() == 255:
+            self.color_gen_hex = f"#{self.color_gen.get_r():02X}{self.color_gen.get_g():02X}{self.color_gen.get_b():02X}"
+            self.color_hex.setText("<b>HEX</b>: " + self.color_gen_hex)
+            self.copy_hex.show()
 
-        self.color_gen_rgba = "rgba(" + str(self.color_gen.get_r()) +", " + str(self.color_gen.get_g()) + ", " + str(self.color_gen.get_b()) + ", " + str(self.color_gen.get_a()) + ")"
-        self.color_rgba.setText("<b>RGBA</b>: " + self.color_gen_rgba)
-        self.copy_rgba.show()
+            self.color_gen_rgba = "rgb(" + str(self.color_gen.get_r()) +", " + str(self.color_gen.get_g()) + ", " + str(self.color_gen.get_b()) + ")"
+            self.color_rgba.setText("<b>RGB</b>: " + self.color_gen_rgba)
+            self.copy_rgba.show()
 
-        self.color_preview.setStyleSheet("QLabel { background: " + self.color_gen_rgba + "; border: 1px solid " + self.color_gen_rgba + "; } ")
+            self.color_preview.setStyleSheet("QLabel { background: " + self.color_gen_rgba + "; border: 1px solid " + self.color_gen_rgba + "; } ")
+
+        else:
+            self.color_gen_hex = f"#{self.color_gen.get_r():02X}{self.color_gen.get_g():02X}{self.color_gen.get_b():02X}{self.color_gen.get_a():02X}"
+            self.color_hex.setText("<b>HEX</b>: " + self.color_gen_hex)
+            self.copy_hex.show()
+
+            self.color_gen_rgba = "rgba(" + str(self.color_gen.get_r()) +", " + str(self.color_gen.get_g()) + ", " + str(self.color_gen.get_b()) + ", " + str(self.color_gen.get_a()) + ")"
+            self.color_rgba.setText("<b>RGBA</b>: " + self.color_gen_rgba)
+            self.copy_rgba.show()
+
+            self.color_preview.setStyleSheet("QLabel { background: " + self.color_gen_rgba + "; border: 1px solid " + self.color_gen_rgba + "; } ")
 
     def copy_hex_to_clipboard(self):
         QApplication.clipboard().setText(self.color_gen_hex)
