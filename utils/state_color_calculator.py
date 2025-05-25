@@ -172,16 +172,6 @@ class StateLayerCalculator(QWidget):
 
 
     def format_color_input(self, input, is_base_color: bool):
-        input = input.lower()
-        input = input.replace("，", ",")
-        input = input.replace("（", "")
-        input = input.replace("）", "")
-        input = input.replace("(", "")
-        input = input.replace(")", "")
-        input = input.replace("rgb", "")
-        input = input.replace("a", "")
-        input = input.replace(" ", "")
-        
         if input == "":
             if is_base_color:
                 self.color_indicator_base.setText("请输入颜色...\nWaiting for input...")
@@ -197,6 +187,16 @@ class StateLayerCalculator(QWidget):
 
         if "," in input:
             print("[INFO] Formatter - Detected format: RGBA")
+            input = input.lower()
+            input = input.replace("，", ",")
+            input = input.replace("（", "")
+            input = input.replace("）", "")
+            input = input.replace("(", "")
+            input = input.replace(")", "")
+            input = input.replace("rgb", "")
+            input = input.replace("a", "")
+            input = input.replace(" ", "")
+
             channels = input.split(",")
             channels_int = [0, 0, 0, 255]
 
@@ -288,7 +288,7 @@ class StateLayerCalculator(QWidget):
 
         else:
             print("[INFO] Formatter - Detected format: HEX")
-            input = input.upper()
+            input = input.lower()
             input = input.replace("#", "")
             print("[INFO] Formatter - Got Color input: #" + input + ".")
 
