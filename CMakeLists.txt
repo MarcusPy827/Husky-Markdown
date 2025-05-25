@@ -16,7 +16,6 @@ include_directories(/home/brian/Qt/6.9.0/gcc_64/include/QtGui/6.9.0/QtGui)
 
 add_subdirectory(libs/Null-Log-Library/src)
 add_subdirectory(libs/qwindowkit)
-add_subdirectory(utils/StateLayerCalculator)
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Gui Widgets LinguistTools)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Gui Widgets LinguistTools)
