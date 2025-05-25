@@ -2,18 +2,51 @@ from PySide6.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, Q
 from PySide6.QtCore import QSize, Qt
 import sys
 
+class Color:
+    def __init__(self, r, g, b, a):
+        self.r = r
+        self.g = g
+        self.b = b
+        self.a = a
+
+    def set_r(self, new_r: int):
+        self.r = new_r
+
+    def get_r(self):
+        return self.r
+    
+    def set_g(self, new_g: int):
+        self.g = new_g
+
+    def get_g(self):
+        return self.g
+    
+    def set_b(self, new_b: int):
+        self.b = new_b
+
+    def get_b(self):
+        return self.b
+    
+    def set_a(self, new_a: int):
+        self.a = new_a
+
+    def get_a(self):
+        return self.a
+
 class StateLayerCalculator(QWidget):
     def __init__(self):
         super().__init__()
 
         self.setWindowTitle("State Layer Calculator")
         self.build_ui()
+        self.base_color_in = Color(0, 0, 0, 0)
+        self.state_color_in = Color(0, 0, 0, 0)
+        self.invalid_color = False
 
     def build_ui(self):
         self.main_layout = QVBoxLayout(self)
         self.setLayout(self.main_layout)
 
-        # Input group
         self.input_group = QGroupBox()
         self.input_group.setTitle("输入 · Input")
         self.main_layout.addWidget(self.input_group)
@@ -27,6 +60,7 @@ class StateLayerCalculator(QWidget):
 
         self.base_color_edit = QLineEdit()
         self.base_color_edit.setPlaceholderText("十六进制或者RGBA · HEX or RGBA")
+        self.base_color_edit.textChanged.connect(self.update_color)
         self.form_layout.addWidget(self.base_color_edit, 0, 1)
 
         self.state_color_label = QLabel()
@@ -35,9 +69,9 @@ class StateLayerCalculator(QWidget):
 
         self.state_color_edit = QLineEdit()
         self.state_color_edit.setPlaceholderText("十六进制或者RGBA · HEX or RGBA")
+        self.state_color_edit.textChanged.connect(self.update_color)
         self.form_layout.addWidget(self.state_color_edit, 1, 1)
 
-        # Output group
         self.output_group = QGroupBox()
         self.output_group.setTitle("输出 · Output")
         self.main_layout.addWidget(self.output_group)
@@ -81,6 +115,35 @@ class StateLayerCalculator(QWidget):
             "Enter the base color and the state color (if not defined, depending on what base color is it could be \"<code>onSurface</code>\" or \"<code>onPrimary</code>\", etc.) and then your result is on the \"Output\" section."
         )
         self.main_layout.addWidget(self.instructions)
+
+    def update_color(self):
+        print("[INFO] Main UI: Updating color input...")
+        self.format_color_input(self.base_color_edit.text())
+
+    def format_color_input(self, input):
+        input = input.lower()
+        input = input.replace("，", ",")
+        input = input.replace("（", "")
+        input = input.replace("）", "")
+        input = input.replace("(", "")
+        input = input.replace(")", "")
+        input = input.replace("rgb", "")
+        input = input.replace("a", "")
+        print("[INFO] Formatter - Got Color input: " + input + ".")
+
+        if "," in input:
+            print("[INFO] Formatter - Detected format: RGBA")
+
+        else:
+            print("[INFO] Formatter - Detected format: HEX")
+
+    def isInt(input):
+        if isinstance(input, int):
+            return True
+        
+        else:
+            return False
+
 
 def main():
     app = QApplication(sys.argv)
