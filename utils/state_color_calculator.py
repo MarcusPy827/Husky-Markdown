@@ -70,6 +70,7 @@ class StateLayerCalculator(QWidget):
 
         self.color_indicator_base = QLabel();
         self.color_indicator_base.setText("请输入颜色...\nWaiting for input...")
+        self.color_indicator_base.setStyleSheet("QLabel { color: black; font-size: normal; font-style: italic; }")
         self.form_layout.addWidget(self.color_indicator_base, 1, 1)
 
         self.state_color_label = QLabel()
@@ -83,6 +84,7 @@ class StateLayerCalculator(QWidget):
 
         self.color_indicator_state = QLabel();
         self.color_indicator_state.setText("请输入颜色...\nWaiting for input...")
+        self.color_indicator_state.setStyleSheet("QLabel { color: black; font-size: normal; font-style: italic; }")
         self.form_layout.addWidget(self.color_indicator_state, 3, 1)
 
         self.output_group = QGroupBox()
@@ -144,6 +146,18 @@ class StateLayerCalculator(QWidget):
         input = input.replace("rgb", "")
         input = input.replace("a", "")
         input = input.replace(" ", "")
+        
+        if input == "":
+            if is_base_color:
+                self.color_indicator_base.setText("请输入颜色...\nWaiting for input...")
+                self.color_indicator_base.setStyleSheet("QLabel { color: black; font-size: normal; font-style: italic; }")
+                return False
+        
+            else:
+                self.color_indicator_state.setText("请输入颜色...\nWaiting for input...")
+                self.color_indicator_state.setStyleSheet("QLabel { color: black; font-size: normal; font-style: italic; }")
+                return False
+        
         print("[INFO] Formatter - Got Color input: " + input + ".")
 
         if "," in input:
@@ -154,42 +168,42 @@ class StateLayerCalculator(QWidget):
             if len(channels) < 3:
                 if is_base_color:
                     self.throw_color_invalid_errror("Formatter", ErrColorInput.BASE)
-                    return
+                    return False
 
                 else:
                     self.throw_color_invalid_errror("Formatter", ErrColorInput.STATE)
-                    return
+                    return False
 
             else:
                 for i in range(0, len(channels), 1):
                     if channels[i] == "":
                         if is_base_color:
                             self.throw_color_invalid_errror("Formatter", ErrColorInput.BASE)
-                            return
+                            return False
 
                         else:
                             self.throw_color_invalid_errror("Formatter", ErrColorInput.STATE)
-                            return
+                            return False
 
                     try:
                         channels_int[i] = int(channels[i])
                         if channels_int[i] > 255 or channels_int[i] < 0:
                             if is_base_color:
                                 self.throw_color_invalid_errror("Formatter", ErrColorInput.BASE)
-                                return
+                                return False
 
                             else:
                                 self.throw_color_invalid_errror("Formatter", ErrColorInput.STATE)
-                                return
+                                return False
 
                     except ValueError:
                         if is_base_color:
                             self.throw_color_invalid_errror("Formatter", ErrColorInput.BASE)
-                            return
+                            return False
 
                         else:
                             self.throw_color_invalid_errror("Formatter", ErrColorInput.STATE)
-                            return
+                            return False
 
                 if is_base_color:
                     self.base_color_in.set_r(channels_int[0])
@@ -239,6 +253,115 @@ class StateLayerCalculator(QWidget):
 
         else:
             print("[INFO] Formatter - Detected format: HEX")
+            input = input.upper()
+            input = input.replace("#", "")
+            print("[INFO] Formatter - Got Color input: #" + input + ".")
+
+            if len(input) == 3 or len(input) == 4:
+                input = self.normalize_hex(input)
+            
+            if len(input) < 6:
+                if is_base_color:
+                    self.throw_color_invalid_errror("Formatter", ErrColorInput.BASE)
+                    return False
+
+                else:
+                    self.throw_color_invalid_errror("Formatter", ErrColorInput.STATE)
+                    return False
+                
+            input_arr = self.split_hex_channel(input)
+            try:
+                if is_base_color:
+                    self.base_color_in.set_r(int(input_arr[0], 16))
+                    self.base_color_in.set_g(int(input_arr[1], 16))
+                    self.base_color_in.set_b(int(input_arr[2], 16))
+                    self.base_color_in.set_a(int(input_arr[3], 16))
+
+                else:
+                    self.state_color_in.set_r(int(input_arr[0], 16))
+                    self.state_color_in.set_g(int(input_arr[1], 16))
+                    self.state_color_in.set_b(int(input_arr[2], 16))
+                    self.state_color_in.set_a(int(input_arr[3], 16))
+
+            except ValueError:
+                if is_base_color:
+                    self.throw_color_invalid_errror("Formatter", ErrColorInput.BASE)
+                    return False
+
+                else:
+                    self.throw_color_invalid_errror("Formatter", ErrColorInput.STATE)
+                    return False
+                
+            if is_base_color:
+                self.color_indicator_base.setText(
+                    "设置颜色成功\n"
+                    "Color input is set."
+                )
+
+                self.color_indicator_base.setStyleSheet(
+                    "QLabel { color: rgba(" + 
+                    str(self.base_color_in.get_r()) + 
+                    ", " +
+                    str(self.base_color_in.get_g()) + 
+                    ", " +
+                    str(self.base_color_in.get_b()) + 
+                    ", " +
+                    str(self.base_color_in.get_a()) + 
+                    "); font-weight: normal; }"
+                )
+
+            else:
+                self.color_indicator_state.setText(
+                    "设置颜色成功\n"
+                    "Color input is set."
+                )
+
+                self.color_indicator_state.setStyleSheet(
+                    "QLabel { color: rgba(" + 
+                    str(self.state_color_in.get_r()) + 
+                    ", " +
+                    str(self.state_color_in.get_g()) + 
+                    ", " +
+                    str(self.state_color_in.get_b()) + 
+                    ", " +
+                    str(self.state_color_in.get_a()) + 
+                    "); font-weight: normal; }"
+                )
+
+        return True
+
+    def normalize_hex(self, input):
+        print("[WARN] HEX Normalizer: This function assume that your input is shorthand string format RGB or RGBA")
+        input = input.replace("#", "")
+        
+        output = ""
+        output += input[0]
+        output += input[0]
+        output += input[1]
+        output += input[1]
+        output += input[2]
+        output += input[2]
+
+        if len(input) == 4:
+            output += input[3]
+            output += input[3]
+
+        print("[ OK ] HEX Normalizer: Generated HEX color " + output + ".")
+        return output
+    
+    def split_hex_channel(self, input):
+        print("[WARN] HEX Channel Splitter: This function assume that your input is shorthand string format RRGGBB or RRGGBBAA")
+        output = ["", "", "", "FF"]
+        
+        output[0] = input[0:2]
+        output[1] = input[2:4]
+        output[2] = input[4:6]
+        
+        if len(input) >= 8:
+            output[3] = input[6:8]
+
+        print("[ OK ] HEX Channel Splitter: Successfully generated HEX color array.")
+        return output
 
     def throw_color_invalid_errror(self, caller_name, type: ErrColorInput):
         print("[ERROR] " +  caller_name + ": The color you input is invalid. Hence, the function returned " + str(type.value) + ".")
