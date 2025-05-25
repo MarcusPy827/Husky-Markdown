@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QGroupBox, QGridLayout, QLabel, QLineEdit, QPushButton, QFrame
+from PySide6.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QGroupBox, QGridLayout, QLabel, QLineEdit, QPushButton, QFrame, QDoubleSpinBox
 from PySide6.QtCore import QSize, Qt
 from enum import Enum
 import sys
@@ -42,10 +42,13 @@ class StateLayerCalculator(QWidget):
     def __init__(self):
         super().__init__()
 
-        self.setWindowTitle("State Layer Calculator")
+        self.setWindowTitle("颜色叠加计算器 · State Layer Calculator")
         self.build_ui()
         self.base_color_in = Color(0, 0, 0, 0)
         self.state_color_in = Color(0, 0, 0, 0)
+        self.color_gen = Color(0, 0, 0, 0)
+        self.color_gen_hex = ""
+        self.color_gen_rgba = ""
         self.invalid_color = False
 
     def build_ui(self):
@@ -87,6 +90,18 @@ class StateLayerCalculator(QWidget):
         self.color_indicator_state.setStyleSheet("QLabel { color: black; font-size: normal; font-style: italic; }")
         self.form_layout.addWidget(self.color_indicator_state, 3, 1)
 
+        self.opacity_desc = QLabel()
+        self.opacity_desc.setText("不透明度 · Opacity: ")
+        self.form_layout.addWidget(self.opacity_desc, 4, 0)
+
+        self.opacity_edit = QDoubleSpinBox()
+        self.opacity_edit.setMinimum(0.0)
+        self.opacity_edit.setMaximum(1.0)
+        self.opacity_edit.setSingleStep(0.01)
+        self.opacity_edit.setValue(0.0)
+        self.opacity_edit.valueChanged.connect(self.update_color)
+        self.form_layout.addWidget(self.opacity_edit, 4, 1)
+
         self.output_group = QGroupBox()
         self.output_group.setTitle("输出 · Output")
         self.main_layout.addWidget(self.output_group)
@@ -100,19 +115,23 @@ class StateLayerCalculator(QWidget):
         self.result_layout.addWidget(self.color_preview)
 
         self.color_hex = QLabel()
-        self.color_hex.setText("HEX #??????")
+        self.color_hex.setText("HEX #RRGGBBAA")
         self.result_layout.addWidget(self.color_hex)
 
         self.copy_hex = QPushButton()
         self.copy_hex.setText("复制 · Copy")
+        self.copy_hex.clicked.connect(self.copy_hex_to_clipboard)
+        self.copy_hex.hide()
         self.result_layout.addWidget(self.copy_hex)
 
         self.color_rgba = QLabel()
-        self.color_rgba.setText("rgba(??, ??, ??, ??)")
+        self.color_rgba.setText("rgba(rr, gg, bb, aa)")
         self.result_layout.addWidget(self.color_rgba)
 
         self.copy_rgba = QPushButton()
         self.copy_rgba.setText("复制 · Copy")
+        self.copy_rgba.clicked.connect(self.copy_rgba_to_clipboard)
+        self.copy_rgba.hide()
         self.result_layout.addWidget(self.copy_rgba)
 
         self.horizontal_divider = QFrame()
@@ -133,8 +152,15 @@ class StateLayerCalculator(QWidget):
 
     def update_color(self):
         print("[INFO] Main UI: Updating color input...")
-        self.format_color_input(self.base_color_edit.text(), True)
-        self.format_color_input(self.state_color_edit.text(), False)
+        if self.format_color_input(self.base_color_edit.text(), True) == True and self.format_color_input(self.state_color_edit.text(), False) == True:
+            self.generate_color()
+        else:
+            self.color_preview.setStyleSheet("QLabel { background: transparent; border: 1px solid #ccc; } ")
+            self.color_rgba.setText("rgba(rr, gg, bb, aa)")
+            self.color_hex.setText("HEX #RRGGBBAA")
+            self.copy_hex.hide()
+            self.copy_rgba.hide()
+
 
     def format_color_input(self, input, is_base_color: bool):
         input = input.lower()
@@ -362,6 +388,33 @@ class StateLayerCalculator(QWidget):
 
         print("[ OK ] HEX Channel Splitter: Successfully generated HEX color array.")
         return output
+    
+    def add_layer(self, base: int, layer: int):
+        alpha = self.opacity_edit.value()
+        result = base * (1 - alpha) + layer * alpha
+        return min(round(result), 255)
+    
+    def generate_color(self):
+        self.color_gen.set_r(self.add_layer(self.base_color_in.get_r(), self.state_color_in.get_r()))
+        self.color_gen.set_g(self.add_layer(self.base_color_in.get_g(), self.state_color_in.get_g()))
+        self.color_gen.set_b(self.add_layer(self.base_color_in.get_b(), self.state_color_in.get_b()))
+        self.color_gen.set_a(self.add_layer(self.base_color_in.get_a(), self.state_color_in.get_a()))
+
+        self.color_gen_hex = f"#{self.color_gen.get_r():02X}{self.color_gen.get_g():02X}{self.color_gen.get_b():02X}{self.color_gen.get_a():02X}"
+        self.color_hex.setText("<b>HEX</b>: " + self.color_gen_hex)
+        self.copy_hex.show()
+
+        self.color_gen_rgba = "rgba(" + str(self.color_gen.get_r()) +", " + str(self.color_gen.get_g()) + ", " + str(self.color_gen.get_b()) + ", " + str(self.color_gen.get_a()) + ")"
+        self.color_rgba.setText("<b>RGBA</b>: " + self.color_gen_rgba)
+        self.copy_rgba.show()
+
+        self.color_preview.setStyleSheet("QLabel { background: " + self.color_gen_rgba + "; border: 1px solid " + self.color_gen_rgba + "; } ")
+
+    def copy_hex_to_clipboard(self):
+        QApplication.clipboard().setText(self.color_gen_hex)
+
+    def copy_rgba_to_clipboard(self):
+        QApplication.clipboard().setText(self.color_gen_rgba)
 
     def throw_color_invalid_errror(self, caller_name, type: ErrColorInput):
         print("[ERROR] " +  caller_name + ": The color you input is invalid. Hence, the function returned " + str(type.value) + ".")
