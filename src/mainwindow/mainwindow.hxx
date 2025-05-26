@@ -30,6 +30,13 @@ class MainWindow : public QMainWindow {
         QPushButton * closeBtn = new QPushButton();
         QWidget * navigationRail = new QWidget();
         QPushButton * fab = new QPushButton();
+        QPushButton * notesBtn = new QPushButton();
+        QPushButton * notesDesc = new QPushButton();
+        QPushButton * searchBtn = new QPushButton();
+        QPushButton * searchDesc = new QPushButton();
+        QPushButton * settingsBtn = new QPushButton();
+        QPushButton * settingsDesc = new QPushButton();
+        QPushButton * avatarView = new QPushButton();
 
     private slots:
         void minimizeWindow();

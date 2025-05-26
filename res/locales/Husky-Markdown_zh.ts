@@ -51,13 +51,39 @@
     <message>
         <location filename="../../src/mainwindow/mainwindow.cxx" line="24"/>
         <location filename="../../src/mainwindow/mainwindow.cxx" line="31"/>
+        <location filename="../../src/mainwindow/mainwindow.cxx" line="30"/>
+        <location filename="../../src/mainwindow/mainwindow.cxx" line="30"/>
+        <location filename="../../src/mainwindow/mainwindow.cxx" line="30"/>
+        <location filename="../../src/mainwindow/mainwindow.cxx" line="30"/>
+        <location filename="../../src/mainwindow/mainwindow.cxx" line="30"/>
         <source>(H)elp</source>
         <translation>帮助 (H)</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow/mainwindow.cxx" line="24"/>
+        <location filename="../../src/mainwindow/mainwindow.cxx" line="24"/>
+        <location filename="../../src/mainwindow/mainwindow.cxx" line="24"/>
+        <location filename="../../src/mainwindow/mainwindow.cxx" line="24"/>
+        <location filename="../../src/mainwindow/mainwindow.cxx" line="24"/>
+        <location filename="../../src/mainwindow/mainwindow.cxx" line="24"/>
         <source>(F)ile</source>
-        <translation type="unfinished">文件 (F)</translation>
+        <translation>文件 (F)</translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow/mainwindow.cxx" line="92"/>
+        <location filename="../../src/mainwindow/mainwindow.cxx" line="92"/>
+        <source>My Notes</source>
+        <translation>我的笔记</translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow/mainwindow.cxx" line="108"/>
+        <source>Search</source>
+        <translation>搜索</translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow/mainwindow.cxx" line="124"/>
+        <source>Settings</source>
+        <translation>设置</translation>
     </message>
 </context>
 </TS>

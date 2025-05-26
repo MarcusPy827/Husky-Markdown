@@ -136,4 +136,35 @@
     max-height: 56px;
     border: 0px solid #CEE7EF;
     border-radius: 16px;
+    qproperty-icon: url(:/icons/icons/add_material_blue_light.svg);
+    margin-bottom: 14px;
+}
+
+#fab:hover {
+    background: #C2DAE2;
+    border: 0px solid #C2DAE2;
+}
+
+#fab:pressed {
+    background: #BED7DF;
+    border: 0px solid #BED7DF;
+}
+
+/* Avatar View */
+#avatar_view {
+    max-width: 32px;
+    min-width: 32px;
+    max-height: 32px;
+    min-height: 32px;
+    background: transparent;
+    border: 0px solid transparent;
+    border-radius: 16px;
+}
+
+#avatar_view:hover {
+    background: #C2DAE2;
+}
+
+#avatar_view:pressed {
+    background: #BED7DF;
 }

@@ -66,15 +66,77 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     contentContainer->setLayout(contentLayout);
 
     navigationRail->setObjectName("navigation_rail");
-    contentLayout->addWidget(navigationRail);
+    contentLayout->addWidget(navigationRail, 0, Qt::AlignLeft);
 
     auto * navigationRailLayout = new QVBoxLayout;
-    navigationRailLayout->setContentsMargins(20, 20, 20, 20);
+    navigationRailLayout->setContentsMargins(20, 20, 20, 32);
     navigationRailLayout->setSpacing(4);
     navigationRail->setLayout(navigationRailLayout);
 
     fab->setObjectName("fab");
+    fab->setIconSize(QSize(24, 24));
     navigationRailLayout->addWidget(fab, 0, Qt::AlignTop);
+
+    auto * notesBtnLayout = new QVBoxLayout;
+    notesBtnLayout->setContentsMargins(0, 0, 0, 0);
+    notesBtnLayout->setSpacing(8);
+    navigationRailLayout->addLayout(notesBtnLayout, 0);
+
+    notesBtn->setObjectName("notes_btn");
+    notesBtn->setIcon(QIcon(":/icons/icons/notes_icon_active_material_blue_light.svg"));
+    notesBtn->setIconSize(QSize(24, 24));
+    notesBtn->setStyleSheet(ThemeLoader::FromFile(":/styles/styles/material_blue_light_navigation_rail_btn_active.css"));
+    notesBtnLayout->addWidget(notesBtn);
+
+    notesDesc->setObjectName("notes_desc");
+    notesDesc->setText(tr("My Notes"));
+    notesDesc->setStyleSheet(ThemeLoader::FromFile(":/styles/styles/material_blue_light_navigation_rail_btn_label_active.css"));
+    notesBtnLayout->addWidget(notesDesc, 0, Qt::AlignCenter);
+
+    auto * searchBtnLayout = new QVBoxLayout;
+    searchBtnLayout->setContentsMargins(0, 2, 0, 0);
+    searchBtnLayout->setSpacing(8);
+    navigationRailLayout->addLayout(searchBtnLayout);
+
+    searchBtn->setObjectName("search_btn");
+    searchBtn->setIcon(QIcon(":/icons/icons/search_icon_material_blue_light.svg"));
+    searchBtn->setIconSize(QSize(24, 24));
+    searchBtn->setStyleSheet(ThemeLoader::FromFile(":/styles/styles/material_blue_light_navigation_rail_btn_normal.css"));
+    searchBtnLayout->addWidget(searchBtn);
+
+    searchDesc->setObjectName("search_desc");
+    searchDesc->setText(tr("Search"));
+    searchDesc->setStyleSheet(ThemeLoader::FromFile(":/styles/styles/material_blue_light_navigation_rail_btn_label_normal.css"));
+    searchBtnLayout->addWidget(searchDesc);
+
+    auto * settingsBtnLayout = new QVBoxLayout;
+    settingsBtnLayout->setContentsMargins(0, 2, 0, 0);
+    settingsBtnLayout->setSpacing(8);
+    navigationRailLayout->addLayout(settingsBtnLayout);
+
+    settingsBtn->setObjectName("settings_btn");
+    settingsBtn->setIcon(QIcon(":/icons/icons/settings_icon_active_material_blue_light.svg"));
+    settingsBtn->setIconSize(QSize(24, 24));
+    settingsBtn->setStyleSheet(ThemeLoader::FromFile(":/styles/styles/material_blue_light_navigation_rail_btn_normal.css"));
+    settingsBtnLayout->addWidget(settingsBtn);
+
+    settingsDesc->setObjectName("settings_desc");
+    settingsDesc->setText(tr("Settings"));
+    settingsDesc->setStyleSheet(ThemeLoader::FromFile(":/styles/styles/material_blue_light_navigation_rail_btn_label_normal.css"));
+    settingsBtnLayout->addWidget(settingsDesc);
+
+    auto * navigationRailSpacer = new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Expanding);
+    navigationRailLayout->addSpacerItem(navigationRailSpacer);
+
+    avatarView->setObjectName("avatar_view");
+    avatarView->setIcon(QIcon(":/icons/icons/default_avatar_material_blue_light.svg"));
+    avatarView->setIconSize(QSize(32, 32));
+    navigationRailLayout->addWidget(avatarView, 0, Qt::AlignHCenter);
+
+    auto * activityLayout = new QVBoxLayout;
+    activityLayout->setContentsMargins(0, 0, 0, 0);
+    activityLayout->setSpacing(0);
+    contentLayout->addLayout(activityLayout);
 
     this->setAttribute(Qt::WA_TranslucentBackground);
     this->setWindowTitle("Husky Markdown");

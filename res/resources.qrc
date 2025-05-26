@@ -17,6 +17,15 @@
         <file>icons/close_icon_material_blue_light_pressed.svg</file>
         <file>icons/minimize_icon_material_blue_light.svg</file>
         <file>icons/maximize_icon_material_blue_light.svg</file>
+
+        <file>icons/add_material_blue_light.svg</file>
+        <file>icons/notes_icon_material_blue_light.svg</file>
+        <file>icons/notes_icon_active_material_blue_light.svg</file>
+        <file>icons/search_icon_material_blue_light.svg</file>
+        <file>icons/search_icon_active_material_blue_light.svg</file>
+        <file>icons/settings_icon_material_blue_light.svg</file>
+        <file>icons/settings_icon_active_material_blue_light.svg</file>
+        <file>icons/default_avatar_material_blue_light.svg</file>
     </qresource>
     <qresource prefix="/locales">
         <file>locales/Husky-Markdown_zh.ts</file>
@@ -26,6 +35,10 @@
         <file>styles/material_blue_light.css</file>
         <file>styles/material_blue_light_central_widget_normal.css</file>
         <file>styles/material_blue_light_central_widget_maximize.css</file>
+        <file>styles/material_blue_light_navigation_rail_btn_normal.css</file>
+        <file>styles/material_blue_light_navigation_rail_btn_label_normal.css</file>
+        <file>styles/material_blue_light_navigation_rail_btn_active.css</file>
+        <file>styles/material_blue_light_navigation_rail_btn_label_active.css</file>
     </qresource>
     <qresource prefix="/"/>
 </RCC>
