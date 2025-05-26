@@ -168,3 +168,11 @@
 #avatar_view:pressed {
     background: #BED7DF;
 }
+
+/* Header  */
+#header {
+    min-height: 64px;
+    max-height: 64px;
+    background: transparent;
+    border: none;
+}

@@ -138,6 +138,11 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     activityLayout->setSpacing(0);
     contentLayout->addLayout(activityLayout);
 
+    header->setObjectName("header");
+    activityLayout->addWidget(header);
+
+
+
     this->setAttribute(Qt::WA_TranslucentBackground);
     this->setWindowTitle("Husky Markdown");
     this->resize(800, 600);

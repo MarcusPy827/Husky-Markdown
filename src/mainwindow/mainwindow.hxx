@@ -7,6 +7,7 @@
 #include "QSpacerItem"
 #include "QPushButton"
 #include "QLabel"
+#include "QStackedWidget"
 #include "null_log.hxx"
 #include "QWKWidgets/widgetwindowagent.h"
 #include "../theme_loader/theme_loader.hxx"
@@ -37,6 +38,7 @@ class MainWindow : public QMainWindow {
         QPushButton * settingsBtn = new QPushButton();
         QPushButton * settingsDesc = new QPushButton();
         QPushButton * avatarView = new QPushButton();
+        QStackedWidget * header = new QStackedWidget();
 
     private slots:
         void minimizeWindow();

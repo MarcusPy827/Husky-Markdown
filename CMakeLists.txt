@@ -36,6 +36,8 @@ set(PROJECT_SOURCES
         src/frameless_window/frameless_patcher.hxx
         src/theme_loader/theme_loader.cxx
         src/theme_loader/theme_loader.hxx
+        src/search_bar/search_bar.cxx
+        src/search_bar/search_bar.hxx
 )
 
 qt_add_lupdate(Husky-Markdown TS_FILES res/locales/Husky-Markdown_zh.ts SOURCES ${PROJECT_SOURCES})
