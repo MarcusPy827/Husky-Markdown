@@ -51,8 +51,5 @@ class MainWindow : public QMainWindow {
         void toggleMaximizeWindow();
         void closeWindow();
 
-    protected:
-        void changeEvent(QEvent *event) override;
-
 };
 #endif // MAINWINDOW_HXX

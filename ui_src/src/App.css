@@ -1,0 +1,13 @@
+.notebook-type-title {
+    color: rgb(var(--mdui-color-primary-light));
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.notebook-type-title-padding {
+    padding-left: 8px;
+}

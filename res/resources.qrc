@@ -2,6 +2,7 @@
     <qresource prefix="/webview">
         <file>webview/index.html</file>
         <file>webview/index.js</file>
+        <file>webview/index.css</file>
     </qresource>
     <qresource prefix="/icons">
         <file>icons/file_manager_active.svg</file>
@@ -32,8 +33,6 @@
     </qresource>
     <qresource prefix="/styles">
         <file>styles/material_blue_light.css</file>
-        <file>styles/material_blue_light_central_widget_normal.css</file>
-        <file>styles/material_blue_light_central_widget_maximize.css</file>
         <file>styles/material_blue_light_navigation_rail_btn_normal.css</file>
         <file>styles/material_blue_light_navigation_rail_btn_label_normal.css</file>
         <file>styles/material_blue_light_navigation_rail_btn_active.css</file>

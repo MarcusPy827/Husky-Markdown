@@ -7,6 +7,14 @@ QWidget {
     font: 14pt "思源黑体 CN";
 }
 
+#central_widget {
+    background-color: #e4e9eb;
+    border: 0px solid #4b6269;
+    border-radius: 0px;
+    margin: 0px;
+    padding: 0px;
+}
+
 /* Title Bar */
 #title_bar {
     background: transparent;

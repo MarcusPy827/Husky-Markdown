@@ -7,11 +7,8 @@
 static void registerHuskyMarkdownScheme() {
     QWebEngineUrlScheme scheme("huskymarkdown");
     scheme.setSyntax(QWebEngineUrlScheme::Syntax::HostAndPort);
-    scheme.setDefaultPort(0); // 防止警告
-    scheme.setFlags(QWebEngineUrlScheme::SecureScheme |
-                    QWebEngineUrlScheme::LocalScheme |
-                    QWebEngineUrlScheme::LocalAccessAllowed |
-                    QWebEngineUrlScheme::CorsEnabled);
+    scheme.setDefaultPort(0);
+    scheme.setFlags(QWebEngineUrlScheme::SecureScheme | QWebEngineUrlScheme::LocalScheme | QWebEngineUrlScheme::LocalAccessAllowed | QWebEngineUrlScheme::CorsEnabled);
     QWebEngineUrlScheme::registerScheme(scheme);
 }
 

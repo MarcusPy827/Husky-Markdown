@@ -154,7 +154,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     this->setWindowTitle("Husky Markdown");
     this->resize(800, 600);
     this->setStyleSheet(ThemeLoader::FromFile(":/styles/styles/material_blue_light.css"));
-    centralWidget->setStyleSheet(ThemeLoader::FromFile(":/styles/styles/material_blue_light_central_widget_normal.css"));
 }
 
 void MainWindow::minimizeWindow() {
@@ -168,13 +167,4 @@ void MainWindow::toggleMaximizeWindow() {
 
 void MainWindow::closeWindow() {
     this->close();
-}
-
-void MainWindow::changeEvent(QEvent *event) {
-    if (event->type() == QEvent::WindowStateChange) {
-        if(isMaximized()) centralWidget->setStyleSheet(ThemeLoader::FromFile(":/styles/styles/material_blue_light_central_widget_maximize.css"));
-        else centralWidget->setStyleSheet(ThemeLoader::FromFile(":/styles/styles/material_blue_light_central_widget_normal.css"));
-    }
-
-    QMainWindow::changeEvent(event);
 }
