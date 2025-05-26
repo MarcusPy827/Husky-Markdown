@@ -58,3 +58,5 @@ build/*
 
 # Original UI Sources
 ui_src/node_modules/*
+ui_src/.idea/workspace.xml
+ui_src/dist/*

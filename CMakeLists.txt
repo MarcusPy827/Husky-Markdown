@@ -17,8 +17,8 @@ include_directories(/home/brian/Qt/6.9.0/gcc_64/include/QtGui/6.9.0/QtGui)
 add_subdirectory(libs/Null-Log-Library/src)
 add_subdirectory(libs/qwindowkit)
 
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Gui Widgets LinguistTools)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Gui Widgets LinguistTools)
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Gui Widgets LinguistTools WebEngineWidgets)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Gui Widgets LinguistTools WebEngineWidgets)
 
 set(TS_FILES
         res/locales/Husky-Markdown_zh.ts.
@@ -83,6 +83,7 @@ target_link_libraries(Husky-Markdown
         PRIVATE
         Qt${QT_VERSION_MAJOR}::Gui
         Qt${QT_VERSION_MAJOR}::Widgets
+        Qt${QT_VERSION_MAJOR}::WebEngineWidgets
         null_log_library
 )
 
