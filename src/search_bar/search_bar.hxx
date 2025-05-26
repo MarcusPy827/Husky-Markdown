@@ -2,6 +2,9 @@
 #define HUSKY_MARKDOWN_SEARCH_BAR_HXX
 
 #include "QWidget"
+#include "QHBoxLayout"
+#include "QLineEdit"
+#include "QPushButton"
 
 class SearchBar : public QWidget {
     Q_OBJECT
@@ -11,7 +14,8 @@ class SearchBar : public QWidget {
         ~SearchBar() override = default;
 
     private:
-
+        QLineEdit * searchBox = new QLineEdit;
+        QPushButton * searchBoxIcon = new QPushButton;
 };
 
 

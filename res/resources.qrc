@@ -26,6 +26,7 @@
         <file>icons/settings_icon_material_blue_light.svg</file>
         <file>icons/settings_icon_active_material_blue_light.svg</file>
         <file>icons/default_avatar_material_blue_light.svg</file>
+        <file>icons/search_bar_icon_material_blue_light.svg</file>
     </qresource>
     <qresource prefix="/locales">
         <file>locales/Husky-Markdown_zh.ts</file>

@@ -9,8 +9,9 @@
 #include "QLabel"
 #include "QStackedWidget"
 #include "null_log.hxx"
-#include "QWKWidgets/widgetwindowagent.h"
+#include "../search_bar/search_bar.hxx"
 #include "../theme_loader/theme_loader.hxx"
+#include "QWKWidgets/widgetwindowagent.h"
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
@@ -39,6 +40,8 @@ class MainWindow : public QMainWindow {
         QPushButton * settingsDesc = new QPushButton();
         QPushButton * avatarView = new QPushButton();
         QStackedWidget * header = new QStackedWidget();
+
+        SearchBar * searchBar = new SearchBar();
 
     private slots:
         void minimizeWindow();

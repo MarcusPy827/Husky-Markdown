@@ -56,10 +56,12 @@
         <location filename="../../src/mainwindow/mainwindow.cxx" line="30"/>
         <location filename="../../src/mainwindow/mainwindow.cxx" line="30"/>
         <location filename="../../src/mainwindow/mainwindow.cxx" line="30"/>
+        <location filename="../../src/mainwindow/mainwindow.cxx" line="30"/>
         <source>(H)elp</source>
         <translation>帮助 (H)</translation>
     </message>
     <message>
+        <location filename="../../src/mainwindow/mainwindow.cxx" line="24"/>
         <location filename="../../src/mainwindow/mainwindow.cxx" line="24"/>
         <location filename="../../src/mainwindow/mainwindow.cxx" line="24"/>
         <location filename="../../src/mainwindow/mainwindow.cxx" line="24"/>
@@ -72,18 +74,29 @@
     <message>
         <location filename="../../src/mainwindow/mainwindow.cxx" line="92"/>
         <location filename="../../src/mainwindow/mainwindow.cxx" line="92"/>
+        <location filename="../../src/mainwindow/mainwindow.cxx" line="92"/>
         <source>My Notes</source>
         <translation>我的笔记</translation>
     </message>
     <message>
+        <location filename="../../src/mainwindow/mainwindow.cxx" line="108"/>
         <location filename="../../src/mainwindow/mainwindow.cxx" line="108"/>
         <source>Search</source>
         <translation>搜索</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow/mainwindow.cxx" line="124"/>
+        <location filename="../../src/mainwindow/mainwindow.cxx" line="124"/>
         <source>Settings</source>
         <translation>设置</translation>
+    </message>
+</context>
+<context>
+    <name>SearchBar</name>
+    <message>
+        <location filename="../../src/search_bar/search_bar.cxx" line="10"/>
+        <source>Search &quot;my notes&quot;</source>
+        <translation>搜索&quot;我的笔记&quot;</translation>
     </message>
 </context>
 </TS>

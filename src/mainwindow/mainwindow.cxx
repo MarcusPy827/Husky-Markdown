@@ -139,7 +139,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     contentLayout->addLayout(activityLayout);
 
     header->setObjectName("header");
-    activityLayout->addWidget(header);
+    header->insertWidget(0, searchBar);
+    header->setCurrentIndex(0);
+    activityLayout->addWidget(header, 0, Qt::AlignTop);
 
 
 
