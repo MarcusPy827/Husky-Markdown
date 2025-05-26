@@ -10,6 +10,7 @@
 #include "QStackedWidget"
 #include "null_log.hxx"
 #include "../search_bar/search_bar.hxx"
+#include "../webview/webview.hxx"
 #include "../theme_loader/theme_loader.hxx"
 #include "QWKWidgets/widgetwindowagent.h"
 
@@ -40,8 +41,10 @@ class MainWindow : public QMainWindow {
         QPushButton * settingsDesc = new QPushButton();
         QPushButton * avatarView = new QPushButton();
         QStackedWidget * header = new QStackedWidget();
+        QStackedWidget * pageContainer = new QStackedWidget();
 
         SearchBar * searchBar = new SearchBar();
+        WebView * webView = new WebView();
 
     private slots:
         void minimizeWindow();

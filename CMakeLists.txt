@@ -40,6 +40,8 @@ set(PROJECT_SOURCES
         src/search_bar/search_bar.hxx
         src/webview/webview.cxx
         src/webview/webview.hxx
+        src/request_handler/request_handler.cxx
+        src/request_handler/request_handler.hxx
 )
 
 qt_add_lupdate(Husky-Markdown TS_FILES res/locales/Husky-Markdown_zh.ts SOURCES ${PROJECT_SOURCES})

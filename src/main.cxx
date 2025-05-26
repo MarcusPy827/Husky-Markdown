@@ -4,9 +4,26 @@
 #include "null_log.hxx"
 #include "mainwindow/mainwindow.hxx"
 
+static void registerHuskyMarkdownScheme() {
+    QWebEngineUrlScheme scheme("huskymarkdown");
+    scheme.setSyntax(QWebEngineUrlScheme::Syntax::HostAndPort);
+    scheme.setDefaultPort(0); // 防止警告
+    scheme.setFlags(QWebEngineUrlScheme::SecureScheme |
+                    QWebEngineUrlScheme::LocalScheme |
+                    QWebEngineUrlScheme::LocalAccessAllowed |
+                    QWebEngineUrlScheme::CorsEnabled);
+    QWebEngineUrlScheme::registerScheme(scheme);
+}
+
+static const bool _registered = []() {
+    registerHuskyMarkdownScheme();
+    return true;
+}();
+
 int main(int argc, char *argv[]) {
     QApplication a(argc, argv);
     QGuiApplication::setAttribute(Qt::AA_DontCreateNativeWidgetSiblings);
+    qputenv("QTWEBENGINE_REMOTE_DEBUGGING", "2009");
 
     NullLog::setIsColorEnabled(true);
     NullLog::info("HuskyMarkdown", "VERSION 0.2");

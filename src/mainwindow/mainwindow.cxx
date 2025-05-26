@@ -134,16 +134,21 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     navigationRailLayout->addWidget(avatarView, 0, Qt::AlignHCenter);
 
     auto * activityLayout = new QVBoxLayout;
-    activityLayout->setContentsMargins(0, 0, 0, 0);
+    activityLayout->setContentsMargins(0, 0, 2, 2);
     activityLayout->setSpacing(0);
     contentLayout->addLayout(activityLayout);
 
     header->setObjectName("header");
     header->insertWidget(0, searchBar);
     header->setCurrentIndex(0);
+    header->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
     activityLayout->addWidget(header, 0, Qt::AlignTop);
 
-
+    pageContainer->setObjectName("page_container");
+    pageContainer->insertWidget(0, webView);
+    pageContainer->setCurrentIndex(0);
+    pageContainer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    activityLayout->addWidget(pageContainer);
 
     this->setAttribute(Qt::WA_TranslucentBackground);
     this->setWindowTitle("Husky Markdown");
